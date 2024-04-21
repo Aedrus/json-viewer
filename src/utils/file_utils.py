@@ -7,32 +7,37 @@ Aims to improve readability and maintainability.
 
 # Utility Functions
 # =================================================================
-def has_suffix(file_name, suffix):
+def has_duplicates(string, char):
     """
-    Check if a file name ends with a specified suffix.
+    Check if a string contains duplicate characters.
 
-    This function takes a file name and a suffix as input and returns
-    a Boolean value indicating whether the file name ends with the specified
-    suffix. The comparison is case-sensitive.
+    This function takes a string and a character as input and returns a boolean value, reflecting whether or not the string contains more than 1 occurrence of the char.
 
     Args:
-        file_name (str): The file name to be checked.
-        suffix (str): The suffix to compare against the file name.
+        string (str): The string to be checked for duplicates.
+        char (str): The character to compare for duplicates.
 
     Returns:
-        bool: True if the file name ends with the specified suffix, False otherwise.
+        bool: True if the string contains 1 or less occurrences of the char. False otherwise.
 
     Example:
-        >>> has_suffix( my_file, ".txt" )
+        >>> has_duplicates( my..file.txt, "." )
         True
-        >>> has_suffix( "image.jpg", ".png" )
+        >>> has_duplicates( "image.jpg", "." )
         False
     """
-    if file_name.endswith(suffix):
+    count = 0
+    for c in string:
+        if c == char:
+            count += 1
+        else:
+            continue
+
+    if count >= 2:
         return True
     else:
         return False
-    
+
 def filter_keys(data):
     # Trying to write a good function for filtering out all of the keys in a file.
     # We should be filtering based on specific criteria such as begins with a " and ends with a ".
